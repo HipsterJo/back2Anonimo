@@ -17,11 +17,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: {sub: string, email: string}) {
-    const user = this.userService.findUserByEmail(payload.email);
+    const user = await this.userService.findUserByEmail(payload.email);
     if(!user) {
       throw new UnauthorizedException("Нет доступа к данному ресурсу");
     }
-    console.log(payload)
-    return { userId: payload.sub, email: payload.email };
+    return {  email: payload.email };
   }
 }

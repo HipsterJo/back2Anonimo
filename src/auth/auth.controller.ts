@@ -12,7 +12,7 @@ import {UserCreateDTO} from '../users/dto/user-create.dto';
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService,
-        private readonly UserService: UsersService) { }
+        ) { }
         
     
     @UseGuards(AuthGuard('local'))
@@ -24,14 +24,12 @@ export class AuthController {
     @Post('register')
     async register(@Body()dto: UserCreateDTO) {
         return this.authService.register(dto);
+        
     }
 
 
-    @UseGuards(JwtAuthGuard)
-    @Get('profile')
-    getProfile(@Request() req) {
-        return req.user;
-    }
+    
 
+    
     
 }

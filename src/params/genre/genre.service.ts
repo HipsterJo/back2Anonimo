@@ -43,7 +43,6 @@ export class GenreService {
         if(!genresId){
             throw new HttpException('Жанры не найдены', HttpStatus.NOT_FOUND);
         }
-        console.log(genresId)
         return genresId;
     }
      

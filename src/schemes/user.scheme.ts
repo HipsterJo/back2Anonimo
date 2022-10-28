@@ -3,13 +3,12 @@ import { Document, now } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { Role } from './userParams/roles.scheme';
 import { raw } from '@nestjs/mongoose';
-
-
+import { Anime } from './anime.schema';
 export type UserDocument = User & Document;
 
 @Schema({timestamps: true})
 export class User {
-    @Prop({required: true})
+    @Prop({required: true, unique: true})
     email: string;
     @Prop({required: true})
     password: string;
@@ -30,7 +29,7 @@ export class User {
     ))
    
     history: any[];
-    @Prop({required: false, type:[mongoose.Schema.Types.ObjectId], ref: 'Anime'})
+    @Prop({required: false, ref: 'Anime'})
     favorites: string[];
     
 }
