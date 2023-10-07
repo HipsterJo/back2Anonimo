@@ -1,0 +1,5 @@
+export enum Status {   
+    FINISHED = 'finished',
+    ONGOING = 'ongoing',
+    DELAYED = 'delayed',
+}
